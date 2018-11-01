@@ -18,6 +18,8 @@ Control.Print.printDepth := 200;
 
 (***********************************************************************************************************)
 (*Question 1a*)
+(*Takes and int and an int list and returns an int list*)
+(*with the number of elements that add up to less than the input int*)
 (***********************************************************************************************************)
 fun numbersToSum sum [] = []
 	| numbersToSum sum (x::rest) =
@@ -26,6 +28,7 @@ fun numbersToSum sum [] = []
 
 (***********************************************************************************************************)
 (*Question 1b*)
+(*Tail recursive version of Question 1a*)
 (***********************************************************************************************************)
 fun numbersToSumTail sum [] = []
 	| numbersToSumTail sum List =
@@ -39,6 +42,10 @@ fun numbersToSumTail sum [] = []
 
 (***********************************************************************************************************)
 (*Question 2*)
+(*This function Takes a predicit function and a list*)
+(*Then return a tuple of two lists, first has values*)
+(*that returned true from the predicate function and*)
+(*the other one is with false*)
 (***********************************************************************************************************)
 
 fun partition F L =
@@ -46,6 +53,7 @@ fun partition F L =
 
 (***********************************************************************************************************)
 (*Question 3*)
+(*Checks if everything is unqique within the list, and returns true or false accordingly*)
 (***********************************************************************************************************)
 fun areAllUnique [] = true
 	| areAllUnique nList =
@@ -65,6 +73,7 @@ fun areAllUnique [] = true
 
 (***********************************************************************************************************)
 (*Question 4 A*)
+(*This function excepts a list of lists and adds up all the values within*)
 (***********************************************************************************************************)
 fun sum nList =
 	let
@@ -81,6 +90,7 @@ fun sum nList =
 
 (***********************************************************************************************************)
 (*Question 4 B*)
+(*This function excepts a list of SOME lists and adds up all the values within and returns a SOME value*)
 (***********************************************************************************************************)
 fun sumOption nList =
 	let
@@ -98,6 +108,8 @@ fun sumOption nList =
 
 (***********************************************************************************************************)
 (*Question 4 C*)
+(*This function excepts a list of lists and adds up all the values within*)
+(*Only this function uses a premade datatype by the user either*)
 (***********************************************************************************************************)
 
 datatype either = IString of string | IInt of int;
@@ -122,6 +134,7 @@ fun sumEither nList =
 
 (***********************************************************************************************************)
 (*Question 5 A*)
+(*This function prints out the tree in post order*)
 (***********************************************************************************************************)
 datatype 'a Tree = LEAF of 'a | NODE of 'a * ('a Tree) * ('a Tree);
 
@@ -130,6 +143,7 @@ fun	depthScan (LEAF (n)) = [n]
 
 (***********************************************************************************************************)
 (*Question 5 B*)
+(*This function searches a Tree in post order to find a value and return the level its on*)
 (***********************************************************************************************************)
 fun	depthSearch(LEAF (n)) comp = if n = comp then 1 else ~1
 	| depthSearch(NODE (n, t1, t2)) comp = 
@@ -144,6 +158,8 @@ fun	depthSearch(LEAF (n)) comp = if n = comp then 1 else ~1
 
 (***********************************************************************************************************)
 (*Question 5 C*)
+(*This function adds two tree togethere, where there are nodes in both trees*)
+(*it sums them up, if only a node from one tree exists, that node is simply put there*)
 (***********************************************************************************************************)
 fun	addTrees (LEAF (x)) (LEAF (y)) = LEAF(x+y)
 	| addTrees (NODE (x, xt1, xt2)) (NODE (y, yt1, yt2))= NODE ((x + y), (addTrees (xt1) (yt1)), (addTrees (xt2) (yt2)))
